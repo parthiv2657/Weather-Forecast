@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>India Weather Map</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: black;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+
+.map-container {
+    margin-top: 80px;
+    width: 100%;
+    height: calc(100vh - 80px);
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-links">
+        <a href="intro.html">Home</a>
+        <a href="forecast.html">Forecast</a>
+        <a href="maps.html">Maps</a>
+        <a href="about.html">About</a>
+    </div>
+</nav>
+<div class="map-container">
+    <iframe 
+        src="https://www.google.com/maps?q=India&output=embed">
+    </iframe>
+</div>
+</body>
+</html>

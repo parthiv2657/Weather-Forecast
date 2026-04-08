@@ -1,0 +1,463 @@
+body{
+    background: url('./evening.mp4');
+    background-position:bottom;
+    background-attachment:fixed;
+}
+.searchbar{
+    height: 10vh;
+    background: black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.searchbarparent{
+    width:50%;
+    height: fit-content;
+    position: relative;
+}
+.searchbarinput{
+    width: 100%;
+    border-radius: 25px; 
+    padding : 10px;
+}
+.searchicon{
+    width : 35px;
+    position:absolute;
+    right:10px; 
+    top : 6.5px;
+    border-radius: 60px;
+}
+.searchicon:hover{
+    cursor:pointer;
+}
+
+.main{
+    height:90vh;
+    display:flex;
+}
+.mainleft{
+    width: 30%;
+    height: 100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.currenttempdiv{
+    background: rgba(212,212,212,0.4);
+    color:white;
+    width:85%;
+    height: 40vh;
+    margin:auto;
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    padding: 12px;
+    display:flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.currenttempdiv h6{
+    font-size:24px;
+    margin : 0px;
+    gap: 15px;
+}
+
+.comingfivedays{
+    background: rgba(212,212,212,0.4);
+    width:85%;
+    height: 40vh;
+    margin:auto;
+    border-radius: 12px;
+    backdrop-filter: blur(15px);
+    padding:15px;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.comingfivedaystitle{
+    font-size:24px;
+}
+
+.leftsub{
+    display:flex;
+    gap:3px;
+}
+
+#cityname{
+    font-size:xx-large
+}
+
+#citytemp{
+    font-size:xx-large;
+}
+
+#skydesc{
+    font-size:x-large;
+}
+
+.cloud{
+    margin:0px;
+    border-radius:none;
+}
+
+.rows{
+    margin:none;
+    display:flex;
+    gap : 2px;
+    align-items:center;
+    font-size: xx-large;
+}
+
+.fiverows{
+    margin:none;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:12px;
+}
+
+.fiverows h5,h6{
+    font-size: x-large;
+}
+
+.fiverowsdiv{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+}
+
+.rightrow{
+    height:27vh;
+    width:100%;
+}
+
+.mainright{
+    width:70%;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.rightrow1strow {
+    display:flex;
+    gap:3px;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding:15px;
+}
+
+.windvalue{
+    background-color: rgba(212,212,212,0.4);
+    padding:5% 5%;
+    width:fit-content;
+    border-radius:15px;
+    align-items:center;
+    justify-content:center;
+    display:flex;
+    margin:auto;
+    gap: 5px;
+}
+
+#row2div{
+    background-color: rgba(212,212,212,0.4);
+    height:85%;
+    width:45%;
+    border-radius:15px;
+    align-items: center;
+    padding:10px;
+}
+
+.row2{
+    display:flex;
+    justify-content: space-between;
+    padding:15px;
+}
+
+.aqimatter{
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+}
+
+.aqimatter h5{
+    font-size: 22px;
+}
+
+.sunmatter{
+    display:flex;
+    flex-direction: column;
+}
+
+.moonmatter{
+    display:flex;
+    flex-direction:column;
+    margin:5px;
+}
+
+.sun{
+    display:flex;
+    align-items: center;
+    gap: 5px;
+    margin:auto;
+}
+
+.moon{
+    display:flex;
+    align-items: center;
+    gap:5px;
+    margin:auto;
+}
+
+.sunrisematter{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sun h5,h4{
+    margin:0%;
+}
+
+.moon h5,h4{
+    margin:0%;
+}
+
+.rowThree{
+    padding:3px;
+}
+
+.todaytemp{
+   display:flex;
+   justify-content: space-between;
+    align-items: center;
+    margin:auto;
+}
+
+.maintemp{
+    background-color: rgba(212,212,212,0.4);
+    width:fit-content;
+    padding:3% 4%;
+    border-radius: 15px;
+}
+
+#navbar {
+    background:#111;
+    padding:12px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+#navbar button {
+    padding:8px 18px;
+    border:none;
+    background:#00c6ff;
+    color:white;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+
+#signupBox {
+    background-color: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+#signupBox input {
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+#signupBox button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#signupBox button:first-of-type {
+    background: #28a745;
+    color: white;
+}
+
+#signupBox button:last-of-type {
+    background: red;
+    color: white;
+}
+
+#weatherModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.weather-box {
+    background: #f1f1f1;
+    padding: 25px;
+    border-radius: 12px;
+    width: 500px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.popup-icon {
+    width: 60px;
+}
+
+.popup-left h1 {
+    font-size: 50px;
+    margin: 0;
+}
+
+#popupDesc {
+    margin: 10px 0;
+}
+
+.popup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.popup-grid div {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.weather-box button {
+    margin-top: 15px;
+    padding: 8px 20px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.weather-box button:hover {
+    background: #333;
+}
+
+
+.nav-btn {
+    padding: 7px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-box {
+    background-color: rgba(212,212,212,0.4);
+    backdrop-filter: blur(15px);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 450px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.popup-box input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+.popup-box .primary-btn {
+    margin-top: 10px;
+    padding: 12px 25px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.popup-box .primary-btn:hover {
+    background: #218838;
+}
+
+.popup-box .close-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.popup-box .close-btn:hover {
+    background: darkred;
+}
+
+#bgVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
