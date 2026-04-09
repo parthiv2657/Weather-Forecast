@@ -140,12 +140,10 @@ body{
 }
 
 .rightrow1strow {
-    display:flex;
-    gap:3px;
-    justify-content: center;
+    display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding:15px;
+    gap: 20px;
+    flex-wrap: wrap;   /* VERY IMPORTANT */
 }
 
 .windvalue{
@@ -169,10 +167,15 @@ body{
     padding:10px;
 }
 
-.row2{
-    display:flex;
-    justify-content: space-between;
-    padding:15px;
+.row2 {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;   /* IMPORTANT */
+}
+
+#row2div {
+    width: 48%;
+    min-width: 300px;
 }
 
 .aqimatter{
@@ -228,11 +231,10 @@ body{
     padding:3px;
 }
 
-.todaytemp{
-   display:flex;
-   justify-content: space-between;
-    align-items: center;
-    margin:auto;
+.todaytemp {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;   /* IMPORTANT */
 }
 
 .maintemp{
