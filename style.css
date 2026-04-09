@@ -132,18 +132,21 @@ body{
     width:100%;
 }
 
-.mainright {
-    width: 70%;
-    display: flex;
+.mainright{
+    width:70%;
+    height:100%;
+    display:flex;
     flex-direction: column;
-    gap: 20px;
+    gap:20px;
 }
 
 .rightrow1strow {
-    display: flex;
+    display:flex;
+    gap:3px;
+    justify-content: center;
     justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;   /* VERY IMPORTANT */
+    align-items: center;
+    padding:15px;
 }
 
 .windvalue{
@@ -167,15 +170,10 @@ body{
     padding:10px;
 }
 
-.row2 {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;   /* IMPORTANT */
-}
-
-#row2div {
-    width: 48%;
-    min-width: 300px;
+.row2{
+    display:flex;
+    justify-content: space-between;
+    padding:15px;
 }
 
 .aqimatter{
@@ -231,10 +229,11 @@ body{
     padding:3px;
 }
 
-.todaytemp {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;   /* IMPORTANT */
+.todaytemp{
+   display:flex;
+   justify-content: space-between;
+    align-items: center;
+    margin:auto;
 }
 
 .maintemp{

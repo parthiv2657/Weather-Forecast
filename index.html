@@ -1,531 +1,79 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Weather forecast</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-  </head>
+<head>
+<title>Weather App</title>
+<link rel="stylesheet" href="intro.css">
+</head>
 <body>
-    <video autoplay muted loop id="bgVideo">
-    <source src="evening.mp4" type="video/mp4">
+<nav class="navbar">
+    <ul class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="intro1.html">Forecast</a>
+    <a href="maps.html">Maps</a>
+    <a href="about.html">About</a>
+    </ul>
+    <div class="nav-right">
+        <span id="userDisplay"></span>
+        <button id="logoutBtn" onclick="logoutUser()">Logout</button>
+    </div>
+</nav>
+<div class="top-auth">
+    <span id="userDisplay"></span>
+    <a href="#" id="loginLink" onclick="openLogin()">Login</a>
+    <button id="signupBtn" onclick="openSignup()">Sign Up</button>
+    <button id="logoutBtn" onclick="logoutUser()" style="display:none;">Logout</button>
+</div>
+<video autoplay muted loop id="bgVideo">
+    <source src="night.mp4" type="video/mp4">
 </video>
-
-<div class="overlay"></div>
-    <div class="searchbar">
-        <div class="searchbarparent">
-            <input class="searchbarinput" placeholder="Search Place">
-            <img class="searchicon" src="searchicon.png" onclick="fetchData()">
-        </div>
-    </div>
-    <div class="main">
-        <div class="mainleft">
-            <div class="currenttempdiv" onclick="openWeatherPopup()" style="cursor:pointer;">
-                <h6 id="cityname">City Name</h6>
-                <h5 id="citytemp">0 &deg; c</h5>
-                <h6 id="skydesc">sky description</h6>
-                <hr style="height:4px;border:2px solid white;" class="line">
-                <div class="leftsub">
-                    <img width="35px" src="calender.png">
-                    <h6 id="Date">Date</h6>
-                </div>
-                <div class="leftsub">
-                    <img width="25px" src="clock.png">
-                    <h6 id="Time">Time</h6>
-                </div>
-            </div>
-            <div class="comingfivedays">
-                <div class="comingfivedaystitle"><h4>Coming Five Days</h4></div>
-                <div class="fiverowsdiv">
-                    <div class="fiverows">
-                    <div class="rows">
-                        <img src="cloud.png" width="35px">
-                        <h6>7 &deg;C</h6>
-                    </div>
-                    <h6>Saturday</h6>
-                    <h6>08-03-2025</h6>
-                    </div>
-                    <div class="fiverows">
-                    <div class="rows">
-                        <img src="cloud.png" width="35px">
-                        <h6>7 &deg;C</h6>
-                    </div>
-                    <h6>Saturday</h6>
-                    <h6>08-03-2025</h6>
-                    </div>
-                    <div class="fiverows">
-                    <div class="rows">
-                        <img src="cloud.png" width="35px">
-                        <h6>7 &deg;C</h6>
-                    </div>
-                    <h6>Saturday</h6>
-                    <h6>08-03-2025</h6>
-                    </div>
-                    <div class="fiverows">
-                    <div class="rows">
-                        <img src="cloud.png" width="35px">
-                        <h6>7 &deg;C</h6>
-                    </div>
-                    <h6>Saturday</h6>
-                    <h6>08-03-2025</h6>
-                    </div>
-                    <div class="fiverows">
-                    <div class="rows">
-                        <img src="cloud.png" width="35px">
-                        <h6>7 &deg;C</h6>
-                    </div>
-                    <h6>Saturday</h6>
-                    <h6>08-03-2025</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mainright">
-            <div class="rightrow">
-                   <div class="rightrow1strow">
-
-                        <div class="windvalue">
-                            <img src="wind.png" width="40px">
-                            <div>
-                                <h5>Metric Name</h5>
-                                <h5>Metric Value</h5>
-                            </div>
-                        </div>
-                        <div class="windvalue">
-                            <img src="humidity.png" width="40px">
-                            <div>
-                                <h5>Metric Name</h5>
-                                <h5>Metric Value</h5>
-                            </div>
-                        </div>
-                        <div class="windvalue">
-                            <img src="feelslike.png" width="40px">
-                            <div>
-                                <h5>Metric Name</h5>
-                                <h5>Metric Value</h5>
-                            </div>
-                        </div>
-                        <div class="windvalue">
-                            <img src="windpressure.png" width="40px">
-                            <div>
-                                <h5>Metric Name</h5>
-                                <h5>Metric Value</h5>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            <div class="rightrow row2">
-                    <div class="aqi row2div" id="row2div">
-                        <h5 style="font-size:24px;margin:2px;padding:3px;">Air Quality Index(AQI)</h5>
-                        <hr style="height:4px;border:none;border:3px solid black;margin:10px;">
-                        <div class="aqimatter">
-                            <img src="wind2.png" width="50px">
-                            <div class="text-center">
-                                <h5 id="co">AQI metric name</h5>
-                                <h5 id="covalue">0</h5>
-                            </div>
-                            <div class="text-center">
-                                <h5 id="no">AQI metric name</h5>
-                                <h5 id="novalue">0</h5>
-                            </div>
-                            <div class="text-center">
-                                <h5 id="no2">AQI metric name</h5>
-                                <h5 id="no2value">0</h5>
-                            </div>
-                            <div class="text-center">
-                                <h5 id="o3">AQI metric name</h5>
-                                <h5 id="o3value">0</h5>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="sunrise" id="row2div">
-                        <h5 style="font-size:24px;margin:2px;padding:3px;">Sunrise & Sunset</h5>
-                        <hr style="height:4px;border:none;border:3px solid black;margin:10px;">
-                        <div class=" sunrisematter">
-                        <div class="sun">
-                            <img src="sun.png" width="75px">
-                            <div class="sunmatter">
-                                <h5>Sunrise</h5>
-                                <h4 id="sunrise">6:00am</h4>
-                            </div>
-
-                        </div>
-                        <div class="moon">
-                            <img src="moon.png" width="75px">
-                            <div class="moonmatter">
-                                <h5>Sunset</h5>
-                                <h4 id="sunset">6:00pm</h4>
-                            </div>
-
-                        </div>
-                        </div>
-                    </div>
-            </div>
-            <div class="rightrow rowThree">
-                <h4 style="font-size:24px;margin:2px;padding:3px;color:white;margin:7px;">Today</h4>
-                <div class="todaytemp">
-                    <div class="maintemp">
-                        <h4>9:00am</h4>
-                        <img src="cloudy.png" width="50px">
-                        <h4>5 &deg;C</h4>
-                    </div>
-                    <div class="maintemp">
-                        <h4>9:00am</h4>
-                        <img src="cloudsun.png" width="50px">
-                        <h4>5 &deg;C</h4>
-                    </div>
-                    <div class="maintemp">
-                        <h4>9:00am</h4>
-                        <img src="sunny.png" width="50px">
-                        <h4>5 &deg;C</h4>
-                    </div>
-                    <div class="maintemp">
-                        <h4>9:00am</h4>
-                        <img src="cloudy.png" width="50px">
-                        <h4>5 &deg;C</h4>
-                    </div>
-                    <div class="maintemp">
-                        <h4>9:00am</h4>
-                        <img src="cloudy.png" width="50px">
-                        <h4>5 &deg;C</h4>
-                    </div>
-                    <div class="maintemp">
-                        <h4>9:00am</h4>
-                        <img src="cloudy.png" width="50px">
-                        <h4>5 &deg;C</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="intro-container">
+    <h1 id="title"></h1>
+    <p id="subtitle"></p>
+</div>
+<div class="search-container">
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search city..." onkeyup="showSuggestions()">
+        <button onclick="searchCity()">Search</button>
     </div>
 
+    <div id="suggestions"></div>
+</div>
 
-<div id="loginModal" class="modal-overlay">
-    <div class="popup-box">
+<div class="location-btn">
+    <button onclick="getLocation()">📍 Use Current Location</button>
+</div>
 
-
-<div id="weatherModal">
-    <div class="weather-box">
-
-        <div class="popup-header">
-            <h4>Current Weather</h4>
-            <span id="popupTime">--:--</span>
-            <h5 id="popupGreeting"></h5>
-        </div>
-
-        <hr>
-
-        <div class="popup-main">
-            <div class="popup-left">
-                <img src="cloudsun.png" class="popup-icon">
-                <h1 id="popupTempBig">29°</h1>
-            </div>
-
-            <div class="popup-right">
-                <h5 id="popupFeels">Real Feel: --°</h5>
-            </div>
-        </div>
-
-        <h5 id="popupDesc">Mostly cloudy</h5>
-
-        <div class="popup-grid">
-            <div><span>Wind</span><span id="popupWind">--</span></div>
-            <div><span>Pressure</span><span id="popupPressure">--</span></div>
-            <div><span>Humidity</span><span id="popupHumidity">--</span></div>
-            <div><span>Cloud Cover</span><span id="popupCloud">--</span></div>
-            <div><span>Visibility</span><span id="popupVisibility">--</span></div>
-            <div><span>Dew Point</span><span id="popupDew">--</span></div>
-        </div>
-
-        <button onclick="closeWeatherPopup()">Close</button>
-
+<div id="loginModal" class="modal">
+    <div class="modal-box">
+        <h3>Login</h3>
+        <input type="text" id="loginUser" placeholder="Username">
+        <input type="password" id="loginPass" placeholder="Password">
+        <button class="primary-btn" onclick="loginUser()">Login</button>
+        <button class="close-btn" onclick="closeLogin()">Close</button>
     </div>
 </div>
 
+<div id="signupModal" class="modal">
+    <div class="modal-box">
+        <div id="step1">
+            <h3>Sign Up</h3>
+            <input type="text" id="fullname" placeholder="Full Name">
+            <input type="email" id="email" placeholder="Email">
+            <button class="primary-btn" onclick="goToStep2()">Next</button>
+            <br><br>
+            <button class="close-btn" onclick="closeSignup()">Close</button>
+        </div>
+        <div id="step2" style="display:none;">
+            <h3>Create Account</h3>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button class="primary-btn" onclick="submitSignup()">Submit</button>
+            <br><br>
+            <button class="close-btn" onclick="closeSignup()">Close</button>
+        </div>
+    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" 
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" 
-        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" 
-        crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" 
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
-        crossorigin="anonymous"></script>
-
-
-
-<script>
-    let weatherData = null;
-function dateFormat(timestamp) 
-{
-    const date = new Date(timestamp * 1000);
-    return date.toLocaleString();
-}
-function getWeatherIcon(item, hour) {
-
-    let main = item.weather[0].main.toLowerCase();
-    let desc = item.weather[0].description.toLowerCase();
-
-    if (main.includes("rain") && !desc.includes("light")) {
-        return "rain.png";
-    }
-
-    if (desc.includes("light rain") || desc.includes("drizzle")) {
-        return hour < 18 ? "cloudsun.png" : "cloud-moon.png";
-    }
-
-    if (main.includes("cloud")) {
-        return hour < 18 ? "cloudsun.png" : "cloud-moon.png";
-    }
-
-    if (main.includes("clear")) {
-        if (hour < 12) return "cloudsun.png";
-        if (hour < 17) return "sunny.png";
-        return hour < 19 ? "sunset.png" : "moon.png";
-    }
-
-    return "sunny.png";
-}
-
-async function fetchAQIData(lat, lon) {
-    let responseAQIData = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=5d8b2246e22ef917267950dfa64459d6`);
-    let formattedAQI = await responseAQIData.json();
-    let list = formattedAQI.list[0].components;
-
-    $("#co").text("CO");
-    $("#covalue").text(list.co);
-
-    $("#no").text("NO");
-    $("#novalue").text(list.no);
-
-    $("#no2").text("NO2");
-    $("#no2value").text(list.no2);
-
-    $("#o3").text("O3");
-    $("#o3value").text(list.o3);
-}
-
-async function nextFiveDays(lat, lon) {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=5d8b2246e22ef917267950dfa64459d6&units=metric`;
-
-    try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-
-        let dailyForecasts = {};
-
-        data.list.forEach(item => {
-            let date = item.dt_txt.split(" ")[0];
-            let time = item.dt_txt.split(" ")[1];
-            if (time === "12:00:00") {
-                dailyForecasts[date] = {
-                    temp: item.main.temp.toFixed(1),
-                    day: new Date(date).toLocaleDateString('en-US', {
-                        weekday: 'long'
-                    })
-                };
-            }
-        });
-
-        let forecastHtml = "";
-
-        Object.keys(dailyForecasts).slice(0, 5).forEach(date => {
-            let forecast = dailyForecasts[date];
-
-            forecastHtml += `
-                <div class="fiverows">
-                    <div class="rows">
-                        <h6>${forecast.temp}&deg;C</h6>
-                    </div>
-                    <h6>${forecast.day}</h6>
-                    <h6>${date}</h6>
-                </div>`;
-        });
-
-        document.querySelector(".fiverowsdiv").innerHTML = forecastHtml;
-
-    } catch (error) {
-        console.error("Error fetching 5-day forecast:", error);
-    }
-}
-
-async function todayTemps(lat, lon) {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=5d8b2246e22ef917267950dfa64459d6&units=metric`;
-
-    try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-
-        let selectedHours = data.list.slice(0, 6);
-
-        let todayHtml = "";
-
-        selectedHours.forEach(item => {
-
-            let utcTime = item.dt * 1000;
-            let localTime = new Date(utcTime + (data.city.timezone * 1000));
-
-            let hour = localTime.getHours();
-
-            let time = localTime.toLocaleTimeString('en-US', {
-                hour: 'numeric',
-                minute: '2-digit',
-                hour12: true
-            });
-
-            let temp = item.main.temp.toFixed(1);
-
-            let icon = getWeatherIcon(item, hour);
-
-            todayHtml += `
-                <div class="maintemp">
-                    <h4>${time}</h4>
-                    <img src="${icon}" width="50px">
-                    <h4>${temp}&deg;C</h4>
-                </div>`;
-        });
-
-        document.querySelector(".todaytemp").innerHTML = todayHtml;
-
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-function changeBackgroundVideo(current, sunrise, sunset, weatherMain) {
-    let video = document.getElementById("bgVideo");
-
-    if (weatherMain.toLowerCase().includes("rain")) {
-        video.src = "rain.mp4";
-    }
-    else if (current >= sunrise && current <= sunset) {
-        video.src = "day.mp4";
-    }
-    else {
-        video.src = "night1.mp4";
-    }
-}
-
-async function fetchData() 
-{
-    let cityName = document.getElementsByClassName("searchbarinput")[0].value;
-    localStorage.setItem("lastCity", cityName);
-
-    let requestdata = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=5d8b2246e22ef917267950dfa64459d6&units=metric`);
-    let formattedData = await requestdata.json();
-
-    $('#cityname').text(formattedData.name);
-    $('#citytemp').text(formattedData.main.temp + " °C");
-    $('#skydesc').text(formattedData.weather[0].description);
-
-    let properDate = dateFormat(formattedData.dt);
-    let date = properDate.split(',')[0];
-    let time = properDate.split(',')[1];
-
-    $('#Date').text(date);
-    $('#Time').text(time);
-
-    let sunrise = dateFormat(formattedData.sys.sunrise).split(',')[1].trim();
-    let sunset = dateFormat(formattedData.sys.sunset).split(',')[1].trim();
-
-    $("#sunrise").text(sunrise);
-    $("#sunset").text(sunset);
-
-   let boxes = document.getElementsByClassName("windvalue");
-
-    boxes[0].children[1].children[0].innerText = "Wind Speed";
-    boxes[0].children[1].children[1].innerText = formattedData.wind.speed + " m/s";
-    boxes[1].children[1].children[0].innerText = "Humidity";
-    boxes[1].children[1].children[1].innerText = formattedData.main.humidity + " %";
-    boxes[2].children[1].children[0].innerText = "Feels Like";
-    boxes[2].children[1].children[1].innerText = formattedData.main.feels_like + " °C";
-    boxes[3].children[1].children[0].innerText = "Pressure";
-    boxes[3].children[1].children[1].innerText = formattedData.main.pressure + " hPa";
-    let lat = formattedData.coord.lat;
-    let lon = formattedData.coord.lon;
-    fetchAQIData(lat, lon);
-    nextFiveDays(lat, lon);
-    todayTemps(lat, lon);
-    let currentTime = formattedData.dt;
-    let sunriseTime = formattedData.sys.sunrise;
-    let sunsetTime = formattedData.sys.sunset;
-    changeBackgroundVideo(currentTime,sunriseTime,sunsetTime,formattedData.weather[0].main);
-    weatherData = formattedData;
-}
-
-window.onload = function () {
-    let lastCity = localStorage.getItem("lastCity");
-
-    if (lastCity) 
-    {
-        document.getElementsByClassName("searchbarinput")[0].value = lastCity;
-        fetchData(); 
-    }
-};
-
-function openWeatherPopup() {
-    document.getElementById("weatherModal").style.display = "flex";
-    document.getElementById("popupGreeting").innerText = getGreeting();
-
-    if (!weatherData) return;
-    document.getElementById("popupTempBig").innerText =
-        weatherData.main.temp + "°C";
-
-    document.getElementById("popupDesc").innerText =
-        weatherData.weather[0].description;
-
-    document.getElementById("popupFeels").innerText =
-        "Feels Like: " + weatherData.main.feels_like + "°C";
-    document.getElementById("popupWind").innerText =
-        weatherData.wind.speed + " m/s";
-
-    document.getElementById("popupPressure").innerText =
-        weatherData.main.pressure + " hPa";
-
-    document.getElementById("popupHumidity").innerText =
-        weatherData.main.humidity + " %";
-
-    document.getElementById("popupCloud").innerText =
-        weatherData.clouds.all + " %";
-
-    document.getElementById("popupVisibility").innerText =
-        (weatherData.visibility / 1000) + " km";
-
-    let dew =
-        weatherData.main.temp - ((100 - weatherData.main.humidity) / 5);
-
-    document.getElementById("popupDew").innerText =
-        dew.toFixed(1) + "°C";
-    document.getElementById("popupTime").innerText =
-        new Date().toLocaleTimeString();
-}
-function closeWeatherPopup() {
-    document.getElementById("weatherModal").style.display = "none";
-}
-function getGreeting() {
-    let hour = new Date().getHours();
-
-    if (hour >= 5 && hour < 12) 
-    {
-        return "Good Morning ☀️";
-    } 
-    else if (hour >= 12 && hour < 17) 
-    {
-        return "Good Afternoon 🌤️";
-    } 
-    else if (hour >= 17 && hour < 19) 
-    {
-        return "Good Evening 🌇";
-    } 
-    else 
-    {
-        return "Good Night 🌙";
-    }
-}
-
-</script>
-    
+<script src="intro.js"></script>
 </body>
 </html>
