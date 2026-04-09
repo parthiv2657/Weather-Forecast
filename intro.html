@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Weather App</title>
+<link rel="stylesheet" href="intro.css">
+</head>
+<body>
+<nav class="navbar">
+    <ul class="nav-links">
+    <a href="intro.html">Home</a>
+    <a href="index.html">Forecast</a>
+    <a href="maps.html">Maps</a>
+    <a href="about.html">About</a>
+    </ul>
+    <div class="nav-right">
+        <span id="userDisplay"></span>
+        <button id="logoutBtn" onclick="logoutUser()">Logout</button>
+    </div>
+</nav>
+<div class="top-auth">
+    <span id="userDisplay"></span>
+    <a href="#" id="loginLink" onclick="openLogin()">Login</a>
+    <button id="signupBtn" onclick="openSignup()">Sign Up</button>
+    <button id="logoutBtn" onclick="logoutUser()" style="display:none;">Logout</button>
+</div>
+<video autoplay muted loop id="bgVideo">
+    <source src="night.mp4" type="video/mp4">
+</video>
+<div class="intro-container">
+    <h1 id="title"></h1>
+    <p id="subtitle"></p>
+</div>
+<div class="search-container">
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search city..." onkeyup="showSuggestions()">
+        <button onclick="searchCity()">Search</button>
+    </div>
+
+    <div id="suggestions"></div>
+</div>
+
+<div class="location-btn">
+    <button onclick="getLocation()">📍 Use Current Location</button>
+</div>
+
+<div id="loginModal" class="modal">
+    <div class="modal-box">
+        <h3>Login</h3>
+        <input type="text" id="loginUser" placeholder="Username">
+        <input type="password" id="loginPass" placeholder="Password">
+        <button class="primary-btn" onclick="loginUser()">Login</button>
+        <button class="close-btn" onclick="closeLogin()">Close</button>
+    </div>
+</div>
+
+<div id="signupModal" class="modal">
+    <div class="modal-box">
+        <div id="step1">
+            <h3>Sign Up</h3>
+            <input type="text" id="fullname" placeholder="Full Name">
+            <input type="email" id="email" placeholder="Email">
+            <button class="primary-btn" onclick="goToStep2()">Next</button>
+            <br><br>
+            <button class="close-btn" onclick="closeSignup()">Close</button>
+        </div>
+        <div id="step2" style="display:none;">
+            <h3>Create Account</h3>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button class="primary-btn" onclick="submitSignup()">Submit</button>
+            <br><br>
+            <button class="close-btn" onclick="closeSignup()">Close</button>
+        </div>
+    </div>
+</div>
+
+<script src="intro.js"></script>
+</body>
+</html>
