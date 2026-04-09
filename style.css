@@ -132,12 +132,11 @@ body{
     width:100%;
 }
 
-.mainright{
-    width:70%;
-    height:100%;
-    display:flex;
+.mainright {
+    width: 70%;
+    display: flex;
     flex-direction: column;
-    gap:20px;
+    gap: 20px;
 }
 
 .rightrow1strow {
