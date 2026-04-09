@@ -19,7 +19,7 @@ function searchCity() {
     }
 
     localStorage.setItem("lastCity", city);
-    window.location.href = "index.html";
+    window.location.href = "indx.html";
 }
 
 function getLocation() {
@@ -34,7 +34,7 @@ function getLocation() {
         let lon = position.coords.longitude;
         localStorage.setItem("lat", lat);
         localStorage.setItem("lon", lon);
-        window.location.href = "index.html";
+        window.location.href = "indx.html";
     });
 }
 
