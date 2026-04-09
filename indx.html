@@ -203,9 +203,6 @@
 
 <div id="loginModal" class="modal-overlay">
     <div class="popup-box">
-
-
-<div id="weatherModal">
     <div class="weather-box">
 
         <div class="popup-header">
@@ -241,7 +238,6 @@
         <button onclick="closeWeatherPopup()">Close</button>
 
     </div>
-</div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
@@ -466,7 +462,7 @@ window.onload = function () {
 };
 
 function openWeatherPopup() {
-    document.getElementById("weatherModal").style.display = "flex";
+    document.getElementById("loginModal").style.display = "flex";
     document.getElementById("popupGreeting").innerText = getGreeting();
 
     if (!weatherData) return;
@@ -502,7 +498,7 @@ function openWeatherPopup() {
         new Date().toLocaleTimeString();
 }
 function closeWeatherPopup() {
-    document.getElementById("weatherModal").style.display = "none";
+    document.getElementById("loginModal").style.display = "none";
 }
 function getGreeting() {
     let hour = new Date().getHours();
