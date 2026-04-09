@@ -34,7 +34,7 @@ function getLocation() {
         let lon = position.coords.longitude;
         localStorage.setItem("lat", lat);
         localStorage.setItem("lon", lon);
-        window.location.href = "indx.html";
+        window.location.replace("indx.html");
     });
 }
 
