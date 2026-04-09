@@ -528,7 +528,11 @@ function getGreeting() {
 </script>
 
 <script>
-    window.location.href = "intro.html";
+  if (window.location.pathname.endsWith("index.html")) {
+    setTimeout(() => {
+      window.location.href = "intro.html";
+    }, 100);
+  }
 </script>
     
 </body>
